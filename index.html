@@ -3,217 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Rizqi Maritza Payment Gateway</title>
+    <title>RIZQI MARITZA PAYMENT GATEWAY</title>
 <style>
     :root {
-        --gold: #D4AF37;
-        --dark-gold: #B8860B;
+        --purple: #966FD6;       /* Pastel Purple */
+        --dark-purple: #7A4FBF;  /* Darker Purple */
         --white: #FFFFFF;
         --text-dark: #333333;
-        --error: #B8860B;
-    }
-
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        font-family: Arial, sans-serif;
-        background: var(--white);
-        color: var(--text-dark);
-        line-height: 1.7;
+        --error: #7A4FBF;        /* Using darker purple for errors */
     }
 
     /* Loading Spinner */
-    #loader {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.9);
-        z-index: 1000;
-    }
-
     .spinner {
-        width: 40px;
-        height: 40px;
-        border: 4px solid #f3f3f3;
-        border-top: 4px solid var(--gold);
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-
-    /* Containers */
-    .container {
-        width: 100%;
-        max-width: 600px;
-        margin: 0 auto;
-        display: none;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .container.visible {
-        display: block;
-        opacity: 1;
+        border-top: 4px solid var(--purple);
     }
 
     /* Header */
     .header {
-        background: var(--gold);
-        padding: 15px;
-        text-align: center;
-        position: sticky;
-        top: 0;
-    }
-
-    .header h1 {
-        font-size: 34px;
-        color: var(--text-dark);
-        margin: 0;
-        line-height: 1.2;
-    }
-
-    .header h2 {
-        font-size: 24px;
-        color: var(--text-dark);
-        margin: 4px 0 0 0;
-        font-weight: 700;
-    }
-
-    /* Content */
-    .content {
-        padding: 25px 20px;
-    }
-
-    /* Error Container */
-    #errorContainer {
-        display: none;
-        color: var(--error);
-        padding: 20px;
-        text-align: center;
-    }
-
-    /* Order Details */
-    #orderDetails p {
-        margin-bottom: 8px;
-    }
-
-    hr {
-        margin: 25px 0;
-        border: 0;
-        border-top: 1px solid #eee;
+        background: var(--purple);
     }
 
     /* Payment Instructions */
-    .payment-instructions {
-        margin-top: 5px;
-    }
-
     .payment-instructions::before {
-        content: "BAIDURI TRANSFER";
-        display: block;
-        color: var(--dark-gold);
-        font-weight: 700;
-        font-size: 22px;
-        margin-bottom: 5px;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-    }
-
-    .account-row {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        margin: 20px 0;
-    }
-
-    #accNum {
-        padding: 12px;
-        background: #FFFBE6;
-        border: 1px solid var(--gold);
-        border-radius: 4px;
-        word-break: break-word;
-        text-align: center;
+        color: var(--dark-purple);
     }
 
     /* Form Elements */
     .copy-btn, input[type="submit"] {
-        background: var(--gold);
-        color: white;
-        border: none;
-        padding: 12px;
-        border-radius: 4px;
-        cursor: pointer;
-        width: 100%;
-        font-size: 16px;
-        transition: opacity 0.2s;
-    }
-
-    .copy-btn:hover, input[type="submit"]:hover {
-        opacity: 0.9;
+        background: var(--purple);
     }
 
     input[type="file"] {
-        width: 100%;
-        padding: 12px;
-        margin: 20px 0;
-        border: 2px dashed var(--gold);
-        background: #FFFBE6;
-        border-radius: 4px;
+        border: 2px dashed var(--purple);
     }
 
-    /* Confirmation Content */
-    #confirmationContent p {
-        margin-bottom: 16px;
+    /* Account Number Box */
+    #accNum {
+        border: 1px solid var(--purple);
     }
 
     @media (min-width: 768px) {
         body {
-            padding: 20px;
             background: #f0f0f0;
-        }
-
-        .container {
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .header h1 {
-            font-size: 26px;
-        }
-
-        .header h2 {
-            font-size: 20px;
-        }
-
-        .account-row {
-            flex-direction: row;
-            align-items: center;
-        }
-
-        .copy-btn {
-            width: auto;
-            min-width: 140px;
-        }
-
-        #accNum {
-            text-align: left;
-        }
-
-        .payment-instructions::before {
-            font-size: 20px;
         }
     }
 </style>
@@ -230,7 +61,7 @@
     <!-- Main Form -->
     <div id="mainContainer" class="container">
         <div class="header">
-            <h1>Rizqi Maritza</h1>
+            <h1>RIZQI MARITZA</h1>
             <h2>Payment Gateway</h2>
         </div>
         <div class="content">
