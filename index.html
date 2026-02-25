@@ -159,7 +159,7 @@
         margin: 20px 0;
     }
 
-    #accNum {
+    #accNum, #accName {
         padding: 12px;
         background: #FFFBE6;
         border: 1px solid var(--purple);
@@ -235,7 +235,7 @@
             min-width: 140px;
         }
 
-        #accNum {
+        #accNum, #accName {
             text-align: left;
         }
 
@@ -272,8 +272,12 @@
             
             <div class="payment-instructions">
                 <h3>Payment Instructions</h3>
-                <!-- Added account name above the account number -->
-                <p><strong>Account Name:</strong> Rizqi Danish</p>
+                <!-- Account name row with copy button -->
+                <div class="account-row">
+                    <span id="accName">Rizqi Danish</span>
+                    <button class="copy-btn" onclick="copyNameToClipboard()">Copy Account Name</button>
+                </div>
+                <!-- Account number row with copy button -->
                 <div class="account-row">
                     <span id="accNum">0400117739603</span>
                     <button class="copy-btn" onclick="copyToClipboard()">Copy Account Number</button>
@@ -312,7 +316,7 @@
         let currentOrder = null;
         let timeoutId;
 
-        // 1. Clipboard Function
+        // 1. Clipboard Functions
         function copyToClipboard() {
             const accNum = document.getElementById('accNum');
             const tempInput = document.createElement('input');
@@ -323,6 +327,22 @@
             try {
                 document.execCommand('copy');
                 alert('Account number copied to clipboard!');
+            } catch (err) {
+                alert('Failed to copy! Please manually select the text.');
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        function copyNameToClipboard() {
+            const accName = document.getElementById('accName');
+            const tempInput = document.createElement('input');
+            tempInput.value = accName.textContent;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            
+            try {
+                document.execCommand('copy');
+                alert('Account name copied to clipboard!');
             } catch (err) {
                 alert('Failed to copy! Please manually select the text.');
             }
